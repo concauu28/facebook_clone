@@ -11,7 +11,10 @@ import AddIcon from "@mui/icons-material/Add";
 import ForumIcon from "@mui/icons-material/Forum";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 function Header() {
+  const [user, setUser] = useContext(UserContext);
   return (
     <div className="header">
       <div className="header_left">
@@ -44,8 +47,8 @@ function Header() {
       </div>
       <div className="header_right">
         <div className="header_info">
-          <Avatar src={localStorage.getItem("photourl")} />
-          <h4>{localStorage.getItem("username")}</h4>
+          <Avatar src={user.photourl} />
+          <h4>{user.username}</h4>
         </div>
         <IconButton>
           <AddIcon />

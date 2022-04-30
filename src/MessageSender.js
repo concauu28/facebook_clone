@@ -15,7 +15,10 @@ import {
   setDoc,
   addDoc,
 } from "firebase/firestore";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 function MessageSender() {
+  const [user, setUser] = useContext(UserContext);
   const [Input, setInput] = useState("");
   const [ImgURL, setImgURL] = useState("");
   const handleSubmit = (e) => {
@@ -23,18 +26,10 @@ function MessageSender() {
     const docRef = addDoc(collection(db, "posts"), {
       message: Input,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      profilePic: localStorage.getItem("photourl"),
-      username: localStorage.getItem("username"),
+      profilePic: user.photourl,
+      username: user.username,
       image: ImgURL,
     });
-    // const q = query(collection(db, "posts"));
-    // q.add({
-    //   message: Input,
-    //   timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    //   profilePic: localStorage.getItem("photourl"),
-    //   username: localStorage.getItem("username"),
-    //   image: ImgURL,
-    // });
     setInput("");
     setImgURL("");
   };
@@ -46,7 +41,7 @@ function MessageSender() {
           <input
             value={Input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="What's on your mind, Tien"
+            placeholder="What's on your mind "
             className="messageSender-input"
           />
           <input

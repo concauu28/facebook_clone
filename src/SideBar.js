@@ -8,13 +8,13 @@ import StorefrontIcon from "@mui/icons-material/Storefront";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import { ExpandMoreOutlined } from "@mui/icons-material";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 function SideBar() {
+  const [user, setUser] = useContext(UserContext);
   return (
     <div className="sidebar">
-      <SideBarRow
-        src={localStorage.getItem("photourl")}
-        title={localStorage.getItem("username")}
-      />
+      <SideBarRow src={user.photourl} title={user.username} />
       <SideBarRow Icon={PeopleIcon} title="Friends" />
       <SideBarRow Icon={GroupsIcon} title="Group" />
       <SideBarRow Icon={VideoLibraryIcon} title="Videos" />

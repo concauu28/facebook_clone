@@ -5,6 +5,7 @@ import Feed from "./Feed";
 import Widgets from "./Widgets";
 import Login from "./Login";
 import { useState } from "react";
+import { UserProvider } from "./UserContext";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -12,21 +13,23 @@ function App() {
     setUser(() => "tien");
   }
   return (
-    <div className="app">
-      {!user ? (
-        <Login login={loginuser} />
-      ) : (
-        <div>
-          {" "}
-          <Header />
-          <div className="app_body">
-            <SideBar />
-            <Feed />
-            <Widgets />
+    <UserProvider>
+      <div className="app">
+        {!user ? (
+          <Login login={loginuser} />
+        ) : (
+          <div>
+            {" "}
+            <Header />
+            <div className="app_body">
+              <SideBar />
+              <Feed />
+              <Widgets />
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </UserProvider>
   );
 }
 

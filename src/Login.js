@@ -3,15 +3,20 @@ import { Button } from "@mui/material";
 import "./Login.css";
 import { auth, provider } from "./firebase";
 import { signInWithPopup } from "firebase/auth";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 
 function Login({ login }) {
+  const [user, setUser] = useContext(UserContext);
   const signIn = () => {
     //sign in
     signInWithPopup(auth, provider)
       .then((result) => {
         login();
-        localStorage.setItem("username", result.user.displayName);
-        localStorage.setItem("photourl", result.user.photoURL);
+        setUser({
+          username: result.user.displayName,
+          photourl: result.user.photoURL,
+        });
         console.log(result.user);
       })
       .catch((error) => alert(error.message));
