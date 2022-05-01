@@ -23,19 +23,32 @@ function Login({ login }) {
   };
   return (
     <div className="login">
-      <div className="login-logo">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/800px-Facebook_f_logo_%282019%29.svg.png"
-          alt=""
-        />
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/1280px-Facebook_Logo_%282019%29.svg.png"
-          alt=""
-        />
+      <div className="login-left">
+        <div className="login-logo">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/1280px-Facebook_Logo_%282019%29.svg.png"
+            alt=""
+          />
+        </div>
+        <h3>Connect with friends and the world around you on Facebook.</h3>
       </div>
-      <Button type="submit" onClick={signIn}>
-        Sign In
-      </Button>
+      <div className="login-right">
+        <div className="login-right-container">
+          <input
+            type="text"
+            placeholder="Email or phone number"
+            className="login-input"
+          ></input>
+          <input
+            type="text"
+            placeholder="Password"
+            className="login-input"
+          ></input>
+          <Button type="submit" onClick={signIn}>
+            Log In
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

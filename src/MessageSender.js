@@ -14,6 +14,7 @@ import {
   query,
   setDoc,
   addDoc,
+  orderBy,
 } from "firebase/firestore";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
@@ -30,6 +31,7 @@ function MessageSender() {
       username: user.username,
       image: ImgURL,
     });
+    // const q = query(db, orderBy("timestamp", "desc"));
     setInput("");
     setImgURL("");
   };
